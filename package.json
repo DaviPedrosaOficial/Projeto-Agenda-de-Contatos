@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate_semmodel",
+  "name": "agenda",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto voltado a pratica dos principios basicos de um projeto em HTML, CSS & JavaScript, além de suas ferramentas como Webpack, Babel, Express, Helmet & Csurf. Além de buscar também aperfeiçoar as práticas de sua arquitetura MVC.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Davi Da Silva Pedrosa",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.28.6",
@@ -29,5 +29,13 @@
     "ejs": "^5.0.1",
     "express": "^5.2.1",
     "mongoose": "^9.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaviPedrosaOficial/Projeto-Agenda-de-Contatos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DaviPedrosaOficial/Projeto-Agenda-de-Contatos/issues"
+  },
+  "homepage": "https://github.com/DaviPedrosaOficial/Projeto-Agenda-de-Contatos#readme"
 }

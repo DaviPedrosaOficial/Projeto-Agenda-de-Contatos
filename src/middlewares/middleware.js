@@ -1,4 +1,4 @@
-exports.checkCsrfError = (err, req, res, next) => {
+exports.checkCsrfError = (err, req, res, next) => { // Middleware para verificar erros relacionados ao token CSRF, sem ele não será possível proteger a aplicação contra ataques de CSRF e fornecer feedback adequado aos usuários quando ocorrerem erros relacionados ao token CSRF
     if (err && err.code === 'EBADCSRFTOKEN') {
         return res.render('includes/errorCsrf');
     }

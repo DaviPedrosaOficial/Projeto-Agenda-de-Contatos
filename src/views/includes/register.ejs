@@ -1,0 +1,62 @@
+<%- include('header') %> <%- include('navbar') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="display-1 text-center">Cadastro</h1>
+      <p class="text-center lead my-5">
+        Bem-vindo! Crie sua conta para acessar seus contatos.
+      </p>
+
+      <form action="/register" method="POST" class="mt-4">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Digite seu nome"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Digite seu email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Digite sua senha"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Registrar</button>
+
+      <div class="container">
+        <div class="row">
+          <div class="col text-center mt-4">
+            <p>
+              Já tem uma conta?
+              <a href="/login" class="text-decoration-none">Faça login</a>
+            </p>
+          </div>
+        </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+  <%- include('footer') %>
+</div>

@@ -8,5 +8,5 @@ HomeModel.create({
     .catch((err) => console.error(err));
 
 exports.mainPage = (req, res) => {
-    res.render('index');
+    res.render('includes/index');
 }

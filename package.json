@@ -25,9 +25,14 @@
     "webpack-cli": "^7.0.2"
   },
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
+    "csurf": "^1.11.0",
     "dotenv": "^17.3.1",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
     "mongoose": "^9.3.3"
   },
   "repository": {

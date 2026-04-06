@@ -20,71 +20,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `:root{
-    --primary-color: #0784a0;}
-
-* {
-    box-sizing: border-box;
-    outline: none;
-}   
-
-body{
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
-    font-size: 1.3em;
-    line-height: 1.5em;
-}
-
-.container{
-    max-width: 640px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 4px;
-}
-
-form input, form label, form button{
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-form input{
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form input:focus{
-    outline: 1px solid var(--primary-color);
-}
-
-form button{
-    margin-top: 20px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: 1px solid black;
-    height: 2em;
-    border-radius: 4px;
-    font-size: 1em;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-form button:hover{
-    background-color: #054f60;
-}
-
-h1{
-    font-family: 'Merriweather', serif;
-    color: rgb(42, 130, 165);
-    text-shadow: 1px 1px 2px #000000;
-    text-transform: uppercase;
-    text-align: center;
-}`, "",{"version":3,"sources":["webpack://./frontend/assets/css/style.css"],"names":[],"mappings":"AAEA;IACI,wBAAwB,CAAC;;AAE7B;IACI,sBAAsB;IACtB,aAAa;AACjB;;AAEA;IACI,SAAS;IACT,UAAU;IACV,sCAAsC;IACtC,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;IACjB,gBAAgB;IAChB,aAAa;IACb,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,cAAc;IACd,sBAAsB;IACtB,kBAAkB;AACtB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,gBAAgB;IAChB,sCAAsC;IACtC,WAAW;IACX,uBAAuB;IACvB,WAAW;IACX,kBAAkB;IAClB,cAAc;IACd,yBAAyB;IACzB,eAAe;AACnB;AACA;IACI,yBAAyB;AAC7B;;AAEA;IACI,kCAAkC;IAClC,wBAAwB;IACxB,gCAAgC;IAChC,yBAAyB;IACzB,kBAAkB;AACtB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');\r\n\r\n:root{\r\n    --primary-color: #0784a0;}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n    outline: none;\r\n}   \r\n\r\nbody{\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: var(--primary-color);\r\n    font-size: 1.3em;\r\n    line-height: 1.5em;\r\n}\r\n\r\n.container{\r\n    max-width: 640px;\r\n    margin: 50px auto;\r\n    background: #fff;\r\n    padding: 20px;\r\n    border-radius: 4px;\r\n}\r\n\r\nform input, form label, form button{\r\n    display: block;\r\n    width: 100%;\r\n    margin-bottom: 10px;\r\n}\r\n\r\nform input{\r\n    padding: 10px;\r\n    font-size: 1em;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n}\r\n\r\nform input:focus{\r\n    outline: 1px solid var(--primary-color);\r\n}\r\n\r\nform button{\r\n    margin-top: 20px;\r\n    background-color: var(--primary-color);\r\n    color: #fff;\r\n    border: 1px solid black;\r\n    height: 2em;\r\n    border-radius: 4px;\r\n    font-size: 1em;\r\n    text-transform: uppercase;\r\n    cursor: pointer;\r\n}\r\nform button:hover{\r\n    background-color: #054f60;\r\n}\r\n\r\nh1{\r\n    font-family: 'Merriweather', serif;\r\n    color: rgb(42, 130, 165);\r\n    text-shadow: 1px 1px 2px #000000;\r\n    text-transform: uppercase;\r\n    text-align: center;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

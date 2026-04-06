@@ -18,7 +18,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));                 // U
 app.use(routes);                                                            // Utilizado para dizer para o Express utilizar as rotas definidas no arquivo router.js, sem ele não será possível acessar as rotas definidas no arquivo router.js, como a rota '/' que renderiza a página inicial (index.ejs)
 
 app.set('view engine', 'ejs');                                              // Define qual a engine que utilizaremos para renderizar as views (arquivos .ejs)
-app.set('views', path.resolve(__dirname, 'src', 'views'));                  // Define o diretório onde estão as views (arquivos .ejs)
+app.set('views', path.resolve(__dirname, 'src', 'views', 'includes'));                  // Define o diretório onde estão as views (arquivos .ejs)
 
 app.on('pronto', () => {                                                     // Escuta o evento 'pronto' que é emitido quando a conexão com o banco de dados MongoDB for estabelecida com sucesso, sem ele não será possível iniciar o servidor e acessar a aplicação através do navegador, como http://localhost:3000
     app.listen(3000, () => {                                                 // Inicia o servidor na porta 3000

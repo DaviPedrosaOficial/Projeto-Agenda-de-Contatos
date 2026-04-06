@@ -1,0 +1,33 @@
+{
+  "name": "boilerplate_semmodel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -w",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "babel-loader": "^10.1.1",
+    "core-js": "^3.49.0",
+    "css-loader": "^7.1.4",
+    "nodemon": "^3.1.14",
+    "regenerator-runtime": "^0.14.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3"
+  }
+}

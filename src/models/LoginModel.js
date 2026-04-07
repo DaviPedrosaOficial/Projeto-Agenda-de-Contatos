@@ -1,6 +1,6 @@
 const validator = require('validator');             // Importa a biblioteca validator, que é usada para validar e sanitizar dados, como verificar se um email é válido ou se uma string é vazia
 const bcryptjs = require('bcryptjs');               // Importa a biblioteca bcryptjs, que é usada para hash de senhas, permitindo armazenar senhas de forma segura no banco de dados
-const RegisterModel = require('./RegisterModel');   // Importa o modelo de Register, que é responsável por lidar com a lógica de registro de usuários no banco de dados
+const { RegisterModel } = require('./RegisterModel');   // Importa o modelo de Register, que é responsável por lidar com a lógica de registro de usuários no banco de dados
 
 class Login {
     constructor(body) {

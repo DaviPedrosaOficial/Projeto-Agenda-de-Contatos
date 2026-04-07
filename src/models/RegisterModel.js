@@ -4,7 +4,7 @@ const mongoose = require('mongoose');           // Importa a biblioteca mongoose
 
 const RegisterSchema = new mongoose.Schema({    // Define o esquema do modelo de Register, que é a estrutura dos dados que serão armazenados no banco de dados para os usuários registrados
     nome: { type: String, required: true},
-    email: { type: String, required: true},
+    email: { type: String, required: true, unique: true}, 
     password: { type: String, required: true}
 });
 
@@ -60,4 +60,7 @@ class Register {
     }
 }
 
-module.exports = Register;
+module.exports = {
+    RegisterModel,
+    Register
+};

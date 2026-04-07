@@ -1,4 +1,4 @@
-const Login = require('../models/Login'); // Importa o modelo de Login, que é responsável por lidar com a lógica de autenticação e registro de usuários no banco de dados
+const Login = require('../models/LoginModel'); // Importa o modelo de Login, que é responsável por lidar com a lógica de autenticação e registro de usuários no banco de dados
 
 exports.index = (req, res) => {
     res.render('includes/login'); // Renderiza a página de login (login.ejs) quando a rota de login for acessada
@@ -11,9 +11,10 @@ exports.login = async (req, res) => {
     if(login.errors.length > 0){         // Verifica se existem erros de validação ou autenticação, se existirem, ele renderiza a página de login novamente, passando os erros para serem exibidos na página
         req.flash('errors', login.errors); // Usa o método flash para armazenar os erros na sessão, para que eles possam ser exibidos na página de login
         req.session.save(function(){      // Salva a sessão para garantir que os dados de flash sejam armazenados antes de redirecionar, e depois redireciona para a página de login
-            res.redirect('back');
+            res.redirect('/login');
             return;
         });
+        return;
     }
 
     req.session.user = login.user;      // Se o login for bem-sucedido, ele armazena os dados do usuário autenticado na sessão, para que eles possam ser acessados em outras partes da aplicação

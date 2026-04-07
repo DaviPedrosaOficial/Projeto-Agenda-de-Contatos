@@ -9,8 +9,10 @@ router.get('/', controllerMainPage.index);                               // Defi
 
 //Rota de Login
 router.get('/login', controllerLogin.index);                               // Define a rota '/login' para o método GET, que é a rota de login da aplicação, e quando essa rota for acessada, a função index do controllerLogin será executada, renderizando a página de login (login.ejs)
+router.post('/login', controllerLogin.login);                               // Define a rota '/login' para o método POST, que é a rota de login da aplicação, e quando essa rota for acessada, a função login do controllerLogin será executada, processando os dados enviados pelo formulário de login e verificando as credenciais do usuário no banco de dados
 
 //Rota de Registro
 router.get('/register', controllerRegister.index);                         // Define a rota '/register' para o método GET, que é a rota de registro da aplicação, e quando essa rota for acessada, a função index do controllerRegister será executada, renderizando a página de registro (register.ejs)
+router.post('/register', controllerRegister.register);                     // Define a rota '/register' para o método POST, que é a rota de registro da aplicação, e quando essa rota for acessada, a função register do controllerRegister será executada, processando os dados enviados pelo formulário de registro e criando um novo usuário no banco de dados    
 
 module.exports = router;                                                    // Exporta o router, que contem as rotas definadas nesse arquivo

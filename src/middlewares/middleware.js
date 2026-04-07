@@ -13,3 +13,9 @@ exports.csrfMiddleware = (req, res, next) => {
 exports.notFound = (req, res) => {
     res.status(404).render('includes/404');     // Define o status da resposta como 404 (Not Found) e renderiza a view 'includes/404', sem ele as requisições para rotas que não existem não seriam tratadas adequadamente, o que pode resultar em erros ou comportamentos inesperados para os usuários
 }
+
+exports.globalVariables = (req, res, next) => {
+    res.locals.errors = req.flash('errors');    // Define a variável local 'errors' com os erros armazenados na sessão usando o método flash, sem ele não seria possível acessar os erros nas views (arquivos .ejs), o que é importante para exibir mensagens de erro para os usuários quando ocorrerem erros de validação ou outros tipos de erros
+    res.locals.success = req.flash('success');  // Define a variável local 'success' com as mensagens de sucesso armazenadas na sessão usando o método flash, sem ele não seria possível acessar as mensagens de sucesso nas views (arquivos .ejs), o que é importante para exibir mensagens de sucesso para os usuários quando uma ação for realizada com sucesso, como o registro de um novo usuário
+    next();                                     // Chama a função next() para passar o controle para o próximo middleware ou rota, sem ele a execução do middleware seria interrompida e as rotas seguintes não seriam processadas, o que pode causar problemas na funcionalidade da aplicação
+}

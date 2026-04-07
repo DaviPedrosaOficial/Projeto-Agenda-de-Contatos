@@ -9,15 +9,17 @@
         Bem-vindo! Crie sua conta para acessar seus contatos.
       </p>
 
+      <%- include('messages') %>
+
       <form action="/register" method="POST" class="mt-4">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="mb-3">
-          <label for="name" class="form-label">Nome</label>
+          <label for="nome" class="form-label">Nome</label>
           <input
             type="text"
             class="form-control"
-            id="name"
-            name="name"
+            id="nome"
+            name="nome"
             placeholder="Digite seu nome"
             required
           />

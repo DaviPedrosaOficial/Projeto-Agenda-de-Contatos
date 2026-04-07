@@ -3,7 +3,7 @@ require('dotenv').config();                                                 // I
 const express = require('express');                                         // Importa o módulo Express, que é um framework para criar servidores web em Node.js, sem ele não será possível criar o servidor e definir as rotas da aplicação
 const app = express();                                                      // Cria uma instância do Express, que será a representação de nossa aplicação
 const mongoose = require('mongoose');                                       // Importa o módulo Mongoose, que é um ODM (Object Data Modeling) para MongoDB, sem ele não será possível conectar ao banco de dados MongoDB e definir os modelos de dados da aplicação
-const { checkCsrfError, csrfMiddleware, notFound } = require('./src/middlewares/middleware');     // Importa a função checkCsrfError do arquivo middleware.js, que é um middleware para verificar erros relacionados ao token CSRF, sem ele não será possível proteger a aplicação contra ataques de CSRF e fornecer feedback adequado aos usuários quando ocorrerem erros relacionados ao token CSRF
+const { checkCsrfError, csrfMiddleware, notFound, globalVariables } = require('./src/middlewares/middleware');     // Importa a função checkCsrfError do arquivo middleware.js, que é um middleware para verificar erros relacionados ao token CSRF, sem ele não será possível proteger a aplicação contra ataques de CSRF e fornecer feedback adequado aos usuários quando ocorrerem erros relacionados ao token CSRF
 
 
 
@@ -43,10 +43,12 @@ app.use(csrf());                                                            // U
 
 app.use(flash());                                                           // Utilizado para dizer para o Express utilizar o middleware connect-flash, sem ele não será possível exibir mensagens de flash (mensagens temporárias) para os usuários, como mensagens de sucesso ou erro após realizar ações como login, cadastro, etc.
 app.use(csrfMiddleware);                                                    // Utilizado para dizer para o Express utilizar o middleware CSRF, sem ele a aplicação pode estar vulnerável a ataques de CSRF
+app.use(globalVariables);                                                   // Utilizado para dizer para o Express utilizar o middleware globalVariables, que é um middleware para definir variáveis globais acessíveis em todas as views (arquivos .ejs), sem ele não seria possível acessar as variáveis de erros e sucesso nas views, o que é importante para exibir mensagens de erro ou sucesso para os usuários após realizar ações como login, cadastro, etc.  
 
 app.use(routes);                                                            // Utilizado para dizer para o Express utilizar as rotas definidas no arquivo router.js, sem ele não será possível acessar as rotas definidas no arquivo router.js, como a rota '/' que renderiza a página inicial (index.ejs)
 app.use(checkCsrfError);                                                    // Utilizado para dizer para o Express utilizar o middleware para verificar erros relacionados ao token CSRF, sem ele não será possível proteger a aplicação contra ataques de CSRF e fornecer feedback adequado aos usuários quando ocorrerem erros relacionados ao token CSRF
-app.use(notFound);                                                           // Utilizado para dizer para o Express utilizar o middleware notFound, que é um middleware para lidar com rotas não encontradas (404), sem ele as requisições para rotas que não existem não seriam tratadas adequadamente, o que pode resultar em erros ou comportamentos inesperados para os usuários
+app.use(notFound);                                                          // Utilizado para dizer para o Express utilizar o middleware notFound, que é um middleware para lidar com rotas não encontradas (404), sem ele as requisições para rotas que não existem não seriam tratadas adequadamente, o que pode resultar em erros ou comportamentos inesperados para os usuários
+
 
 app.set('view engine', 'ejs');                                              // Define qual a engine que utilizaremos para renderizar as views (arquivos .ejs)
 app.set('views', path.resolve(__dirname, 'src', 'views'));                  // Define o diretório onde estão as views (arquivos .ejs)

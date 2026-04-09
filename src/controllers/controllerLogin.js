@@ -5,21 +5,28 @@ exports.index = (req, res) => {
 }
 
 exports.login = async (req, res) => {
-    const login = new Login(req.body);   // Cria uma nova instância do modelo de Login, passando os dados do formulário de login (req.body) para o construtor da classe Login
-    await login.login();                // Chama o método login da instância de Login, que é responsável por validar os dados e autenticar o usuário no banco de dados
+    
+    try {
+        const login = new Login(req.body);   // Cria uma nova instância do modelo de Login, passando os dados do formulário de login (req.body) para o construtor da classe Login
+        await login.login();                // Chama o método login da instância de Login, que é responsável por validar os dados e autenticar o usuário no banco de dados
 
-    if(login.errors.length > 0){         // Verifica se existem erros de validação ou autenticação, se existirem, ele renderiza a página de login novamente, passando os erros para serem exibidos na página
-        req.flash('errors', login.errors); // Usa o método flash para armazenar os erros na sessão, para que eles possam ser exibidos na página de login
-        req.session.save(function(){      // Salva a sessão para garantir que os dados de flash sejam armazenados antes de redirecionar, e depois redireciona para a página de login
-            res.redirect('/login');
+        if(login.errors.length > 0){         // Verifica se existem erros de validação ou autenticação, se existirem, ele renderiza a página de login novamente, passando os erros para serem exibidos na página
+            req.flash('errors', login.errors); // Usa o método flash para armazenar os erros na sessão, para que eles possam ser exibidos na página de login
+            req.session.save(function(){      // Salva a sessão para garantir que os dados de flash sejam armazenados antes de redirecionar, e depois redireciona para a página de login
+                res.redirect('/login');
+                return;
+            });
+            return;
+        }
+
+        req.session.user = login.user;      // Se o login for bem-sucedido, ele armazena os dados do usuário autenticado na sessão, para que eles possam ser acessados em outras partes da aplicação
+        req.session.save(function(){        // Salva a sessão para garantir que os dados do usuário sejam armazenados antes de redirecionar, e depois redireciona para a página inicial ou dashboard da aplicação
+            res.redirect('/');
             return;
         });
-        return;
     }
-
-    req.session.user = login.user;      // Se o login for bem-sucedido, ele armazena os dados do usuário autenticado na sessão, para que eles possam ser acessados em outras partes da aplicação
-    req.session.save(function(){        // Salva a sessão para garantir que os dados do usuário sejam armazenados antes de redirecionar, e depois redireciona para a página inicial ou dashboard da aplicação
-        res.redirect('/');
-        return;
-    });
+    catch (error) {
+        console.error('Erro ao fazer login:', error);
+        return res.render ('404');
+    }
 }

@@ -1,4 +1,4 @@
-<% if (errors) { %>
+<% if (errors.length > 0) { %>  <%# Colocamos como length para verificar se o array tem algum elemento, ou seja, se tem alguma mensagem de erro, pois caso não ouvesse erro o array continuaria aparecendo, somente por ser um array vazio %>
     <div class="row">
         <div class="col my-3">
             <div class="alert alert-danger">

@@ -20,6 +20,7 @@ exports.login = async (req, res) => {
         }
 
         req.session.user = login.user;      // Se o login for bem-sucedido, ele armazena os dados do usuário autenticado na sessão, para que eles possam ser acessados em outras partes da aplicação
+        req.flash('success', 'Login realizado com sucesso'); // Usa o método flash para armazenar uma mensagem de sucesso na sessão, para que ela possa ser exibida na página inicial ou dashboard da aplicação
         req.session.save(function(){        // Salva a sessão para garantir que os dados do usuário sejam armazenados antes de redirecionar, e depois redireciona para a página inicial ou dashboard da aplicação
             res.redirect('/');
             return;

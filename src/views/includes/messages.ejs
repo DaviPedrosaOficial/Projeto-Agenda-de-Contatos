@@ -11,3 +11,17 @@
         </div>
     </div>
 <% } %>
+
+<% if (success.length > 0) { %>  <%# Colocamos como length para verificar se o array tem algum elemento, ou seja, se tem alguma mensagem de sucesso, pois caso não ouvesse sucesso o array continuaria aparecendo, somente por ser um array vazio %>
+    <div class="row">
+        <div class="col my-3">
+            <div class="alert alert-success">
+                <ul>
+                    <% success.forEach(message => { %>
+                        <li><%= message %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+    </div>
+<% } %>

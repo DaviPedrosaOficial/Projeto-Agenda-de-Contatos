@@ -21,15 +21,11 @@ class Register {
         this.validate();
         if(this.errors.length > 0) return;                                          // Verifica se existem erros de validação, se existirem, ele retorna sem fazer nada, impedindo que o registro seja processado
 
-        try{
-            const userExists = await RegisterModel.findOne({ email: this.body.email }); // Verifica se já existe um usuário com o mesmo email no banco de dados usando o modelo RegisterModel, e armazena o resultado na variável userExists
-        
-            if(userExists) {
-                this.errors.push('E-mail já cadastrado');                               // Se já existir um usuário com o mesmo email, ele adiciona uma mensagem de erro ao array de erros
-                return;                                                                 // E retorna sem fazer nada, impedindo que o registro seja processado
-            }
-        } catch (error) {
-            console.error('Erro ao verificar usuário existente:', error);
+        const userExists = await RegisterModel.findOne({ email: this.body.email }); // Verifica se já existe um usuário com o mesmo email no banco de dados usando o modelo RegisterModel, e armazena o resultado na variável userExists
+    
+        if(userExists) {
+            this.errors.push('E-mail já cadastrado');                               // Se já existir um usuário com o mesmo email, ele adiciona uma mensagem de erro ao array de erros
+            return;                                                                 // E retorna sem fazer nada, impedindo que o registro seja processado
         }
 
         if(this.errors.length > 0) return;
@@ -37,11 +33,7 @@ class Register {
         const salt = bcryptjs.genSaltSync(10);                                      // Gera um salt para o hash da senha usando a função genSaltSync da biblioteca bcryptjs, com um fator de custo de 10, o que significa que o processo de hash será mais lento e mais seguro
         this.body.password = bcryptjs.hashSync(this.body.password, salt);           // Hash a senha usando a função hashSync da biblioteca bcryptjs, passando a senha do formulário (this.body.password) e o salt gerado anteriormente, e atribui o resultado de volta à propriedade password do body, garantindo que a senha seja armazenada de forma segura no banco de dados
 
-        try {
-            this.user = await RegisterModel.create(this.body);                      // Se não houver erros, ele cria um novo usuário no banco de dados usando o modelo RegisterModel e os dados do formulário de registro (this.body), e armazena o resultado na propriedade user da classe Register
-        } catch (error) {
-            console.error('Erro ao criar usuário:', error);
-        }
+        this.user = await RegisterModel.create(this.body);                      // Se não houver erros, ele cria um novo usuário no banco de dados usando o modelo RegisterModel e os dados do formulário de registro (this.body), e armazena o resultado na propriedade user da classe Register
     }
 
     validate(){

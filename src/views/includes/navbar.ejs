@@ -16,6 +16,9 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if (user) { %>  <%# Verifica se a variável user existe, ou seja, se o usuário está autenticado, e exibe os links de dashboard e logout apenas para usuários autenticados %>
           <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/logout">Sair</a>
           </li>
         <% } else { %>  <%# Se o usuário não estiver autenticado, exibe os links de login e registro %>

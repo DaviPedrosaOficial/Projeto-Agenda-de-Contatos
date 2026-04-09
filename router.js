@@ -15,4 +15,10 @@ router.post('/login', controllerLogin.login);                               // D
 router.get('/register', controllerRegister.index);                         // Define a rota '/register' para o método GET, que é a rota de registro da aplicação, e quando essa rota for acessada, a função index do controllerRegister será executada, renderizando a página de registro (register.ejs)
 router.post('/register', controllerRegister.register);                     // Define a rota '/register' para o método POST, que é a rota de registro da aplicação, e quando essa rota for acessada, a função register do controllerRegister será executada, processando os dados enviados pelo formulário de registro e criando um novo usuário no banco de dados    
 
+//Rota de Logout
+router.get('/logout', (req, res) => {                                      // Define a rota '/logout' para o método GET, que é a rota de logout da aplicação, e quando essa rota for acessada, a função anônima definida aqui será executada, destruindo a sessão do usuário e redirecionando para a página de login
+    req.session.destroy();
+    res.redirect('/');
+});
+
 module.exports = router;                                                    // Exporta o router, que contem as rotas definadas nesse arquivo

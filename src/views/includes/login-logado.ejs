@@ -1,0 +1,18 @@
+<%- include('header') %> <%- include('navbar') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="display-1 text-center">Olá, <%= user.email %>, você já está logado!</h1>
+      <p class="text-center lead my-5">
+        Agora você pode acessar o dashboard para gerenciar seus contatos, ou sair da sua conta usando o link de logout na barra de navegação.
+      </p>
+    </div>
+      
+    <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+  <%- include('footer') %>
+</div>

@@ -1,6 +1,7 @@
 const Login = require('../models/LoginModel'); // Importa o modelo de Login, que é responsável por lidar com a lógica de autenticação e registro de usuários no banco de dados
 
 exports.index = (req, res) => {
+    if(res.locals.user) return res.render('includes/login-logado'); // Verifica se o usuário já está autenticado, se estiver, ele renderiza a página de login-logado (login-logado.ejs)
     res.render('includes/login'); // Renderiza a página de login (login.ejs) quando a rota de login for acessada
 }
 

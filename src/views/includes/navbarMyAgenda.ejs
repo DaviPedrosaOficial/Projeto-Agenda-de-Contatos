@@ -14,10 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <% if (user) { %>  <%# Verifica se a variável user existe, ou seja, se o usuário está autenticado, e exibe os links de dashboard e logout apenas para usuários autenticados %>
-          <li class="nav-item">
-            <a class="nav-link" href="/myAgenda">My Agenda</a>
-          </li>
+        <% if (user) { %>  <%# Verifica se a variável user existe, ou seja, se o usuário está autenticado, e exibe os links do My Agenda e logout apenas para usuários autenticados %>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Sair</a>
           </li>

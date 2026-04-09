@@ -1,0 +1,95 @@
+<%- include('header') %>
+<%- include('navbarMyAgenda') %>
+
+<% if (user) { %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-4">
+
+      <h1 class="display-5 text-center">Sua Agenda</h1>
+      <p class="text-center text-muted">
+        Organize seus contatos criando listas personalizadas
+      </p>
+
+      <div class="card mt-4">
+        <div class="card-body">
+
+          <!-- HEADER + BOTÃO -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h5 m-0">Suas listas</h2>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalLista">
+              + Nova Lista
+            </button>
+          </div>
+
+          <!-- SE NÃO EXISTIREM LISTAS -->
+          <% if (!listas || listas.length === 0) { %>
+            <div class="text-center mt-4">
+              <h6>Nenhuma lista criada</h6>
+              <p class="text-muted">Crie uma lista para começar</p>
+            </div>
+          <% } else { %>
+
+          <!-- LISTAS -->
+          <ul class="list-group">
+            <% listas.forEach(lista => { %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                <!-- LINK -->
+                <a href="/listas/<%= lista._id %>" class="text-decoration-none fw-bold">
+                  <%= lista.nome %>
+                </a>
+
+                <!-- DELETE -->
+                <form action="/listas/delete/<%= lista._id %>" method="POST">
+                  <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                </form>
+
+              </li>
+            <% }) %>
+          </ul>
+
+          <% } %>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="modalLista" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Nova Lista</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form action="/listas/create" method="POST">
+        <div class="modal-body">
+          <label class="form-label">Nome da lista</label>
+          <input type="text" name="nome" class="form-control" required>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-dark">Criar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<% } else { %>
+<h1 class="text-center mt-5">Você precisa estar logado</h1>
+<% } %>
+
+<%- include('footer') %>

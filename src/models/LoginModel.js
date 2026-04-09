@@ -19,10 +19,14 @@ class Login {
             return;
         }
 
+        if(this.errors.length > 0) return;
+
         if(!bcryptjs.compareSync(this.body.password, user.password)) { // Compara a senha do formulário de login (this.body.password) com a senha armazenada no banco de dados (user.password) usando a função compareSync da biblioteca bcryptjs, se não forem iguais, ele adiciona uma mensagem de erro ao array de erros
             this.errors.push('Usuário ou senha inválidos');
             return;
         }
+
+        if(this.errors.length > 0) return;
 
         this.user = user; // Se o login for bem-sucedido, ele atribui o usuário encontrado no banco de dados à propriedade user da classe Login, permitindo que as informações do usuário estejam disponíveis para outras partes da aplicação, como os controllers e as views (arquivos .ejs)
     }

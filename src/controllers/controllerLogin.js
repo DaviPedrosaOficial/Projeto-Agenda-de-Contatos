@@ -27,6 +27,5 @@ exports.login = async (req, res) => {
     }
     catch (error) {
         console.error('Erro ao fazer login:', error);
-        return res.render ('404');
     }
 }

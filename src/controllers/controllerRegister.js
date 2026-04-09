@@ -26,6 +26,5 @@ exports.register = async (req, res) => {
         });
     } catch (error) {
         console.error('Erro ao registrar usuário:', error);
-        return res.render ('404');
     }
 }

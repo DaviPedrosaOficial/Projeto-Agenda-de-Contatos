@@ -73,6 +73,7 @@
       </div>
 
       <form action="/listas/create" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="modal-body">
           <label class="form-label">Nome da lista</label>
           <input type="text" name="nome" class="form-control" required>

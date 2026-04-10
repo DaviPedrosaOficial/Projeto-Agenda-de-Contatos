@@ -17,7 +17,7 @@ exports.index = async (req, res) => {
   });
 };
 
-// Criaando lista
+// Criar lista
 exports.create = async (req, res) => {
   if (!req.session.user) return res.redirect('/login');
 
@@ -29,7 +29,7 @@ exports.create = async (req, res) => {
   res.redirect('/myAgenda');
 };
 
-// Mostrar lista (clicou nela)
+// Mostrar lista
 exports.show = async (req, res) => {
   if (!req.session.user) return res.redirect('/login');
 
@@ -44,7 +44,7 @@ exports.show = async (req, res) => {
     listaId: lista._id
   });
 
-  res.render('listaDetalhe', {
+  res.render('includes/listaDetalhe', {
     lista,
     contatos
   });
@@ -60,4 +60,32 @@ exports.delete = async (req, res) => {
   });
 
   res.redirect('/myAgenda');
+};
+
+// Criar contato
+exports.createContato = async (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+
+  await Contato.create({
+    nome: req.body.nome,
+    telefone: req.body.telefone,
+    listaId: req.params.id
+  });
+
+  res.redirect('/listas/' + req.params.id);
+};
+
+// Deletar contato
+exports.deleteContato = async (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+
+  const contato = await Contato.findById(req.params.id);
+
+  if (!contato) return res.redirect('/myAgenda');
+
+  const listaId = contato.listaId;
+
+  await Contato.deleteOne({ _id: req.params.id });
+
+  res.redirect('/listas/' + listaId);
 };

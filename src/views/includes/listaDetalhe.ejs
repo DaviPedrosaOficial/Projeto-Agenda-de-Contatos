@@ -47,7 +47,7 @@
 </div>
 
 <!-- MODAL CONTATO -->
-<div class="modal fade" id="modalContato" tabindex="-1">
+<div class="modal fade" id="modalContato" tabindex="-1" data-tem-erros="<%= Object.keys(errorsObj).length > 0 %>">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -85,8 +85,8 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button class="btn btn-dark">Salvar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-dark">Salvar</button>
         </div>
       </form>
 
@@ -94,16 +94,6 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const temErros = <%= Object.keys(errorsObj).length > 0 %>;
-
-    if (temErros) {
-      const modalContato = document.getElementById('modalContato');
-      const modal = new bootstrap.Modal(modalContato);
-      modal.show();
-    }
-  });
-</script>
+<script src="/assets/js/modal.js"></script>
 
 <%- include('footer') %>

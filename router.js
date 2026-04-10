@@ -17,7 +17,12 @@ router.get('/register', controllerRegister.index);                         // De
 router.post('/register', controllerRegister.register);                     // Define a rota '/register' para o método POST, que é a rota de registro da aplicação, e quando essa rota for acessada, a função register do controllerRegister será executada, processando os dados enviados pelo formulário de registro e criando um novo usuário no banco de dados    
 
 //Rota do My Agenda
-router.get('/myAgenda', controllerMyAgenda.index);                     // Define a rota '/myAgenda' para o método GET, que é a rota do My Agenda da aplicação, e quando essa rota for acessada, a função index do controllerMyAgenda será executada, verificando se o usuário está autenticado e renderizando a página do My Agenda (myAgenda.ejs) com as informações do usuário
+router.get('/myAgenda', controllerMyAgenda.index);
+
+// Listas do My Agenda
+router.post('/listas/create', controllerMyAgenda.create);
+router.get('/listas/:id', controllerMyAgenda.show);
+router.post('/listas/delete/:id', controllerMyAgenda.delete);                     // Define a rota '/myAgenda' para o método GET, que é a rota do My Agenda da aplicação, e quando essa rota for acessada, a função index do controllerMyAgenda será executada, verificando se o usuário está autenticado e renderizando a página do My Agenda (myAgenda.ejs) com as informações do usuário
 
 //Rota de Logout
 router.get('/logout', (req, res) => {                                      // Define a rota '/logout' para o método GET, que é a rota de logout da aplicação, e quando essa rota for acessada, a função anônima definida aqui será executada, destruindo a sessão do usuário e redirecionando para a página de login

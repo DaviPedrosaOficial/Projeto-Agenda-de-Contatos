@@ -24,7 +24,25 @@ const path = require('path');                                               // I
 
 app.use(express.urlencoded({ extended: true }));                            // Para interpretar os dados do formulário, sem ele não será permitido acessar os dados do formulário através de req.body
 app.use(express.static(path.resolve(__dirname, 'public')));                 // Utilizado para demonstrar onde estão os arquivos estáticos (CSS, JS, imagens) de nossa aplicação
-app.use(helmet());                                                          // Utilizado para dizer para o Express utilizar o middleware Helmet, sem ele a aplicação pode estar mais vulnerável a ataques como Cross-Site Scripting (XSS), Clickjacking, etc.
+app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "https://cdn.jsdelivr.net"
+        ],
+        styleSrc: [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "'unsafe-inline'"
+        ],
+        imgSrc: ["'self'", "data:"],
+        connectSrc: ["'self'"],
+        fontSrc: ["'self'", "https://cdn.jsdelivr.net"]                     // Alterações tiveram que ser feitas para que o Bootstrap funcione corretamente, sem essas alterações o Bootstrap não funcionaria corretamente, como os estilos não seriam aplicados e os scripts do Bootstrap não seriam carregados, o que resultaria em uma aparência desconfigurada e funcionalidades quebradas na aplicação
+      }
+    }
+  }));                                                          // Utilizado para dizer para o Express utilizar o middleware Helmet, sem ele a aplicação pode estar mais vulnerável a ataques como Cross-Site Scripting (XSS), Clickjacking, etc.
 
 const sessionOptions = session({                                            // Define as opções de configuração para o middleware de sessões, sem ele não será possível configurar o comportamento das sessões, como a chave secreta, o armazenamento, o tempo de expiração, etc.
     secret: process.env.SECRET,                                             // Define a chave secreta para assinar o ID da sessão, sem ela não será possível criar sessões seguras e proteger contra ataques de falsificação de solicitação entre sites (CSRF)

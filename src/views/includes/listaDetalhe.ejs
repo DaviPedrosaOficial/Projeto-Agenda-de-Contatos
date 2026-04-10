@@ -15,8 +15,6 @@
         </button>
       </div>
 
-      <%- include('messages') %>
-
       <!-- CONTATOS -->
       <% if (!contatos || contatos.length === 0) { %>
         <div class="text-center mt-4">
@@ -61,10 +59,29 @@
       <form action="/contatos/create/<%= lista._id %>" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="modal-body">
-          <input type="text" name="nome" class="form-control mb-2" placeholder="Nome" required>
-          <input type="text" name="sobrenome" class="form-control mb-2" placeholder="Sobrenome"> 
-          <input type="text" name="telefone" class="form-control" placeholder="Telefone">
-          <input type="email" name="email" class="form-control mb-2" placeholder="Email">
+          <input type="text" name="nome" class="form-control mb-2 <%- errorsObj.nome ? 'is-invalid' : '' %>" placeholder="Nome">
+          <% if (errorsObj.nome) { %>
+            <div class="invalid-feedback mb-2">
+              <%= errorsObj.nome %>
+            </div>
+          <% } %>
+
+          <input type="text" name="sobrenome" class="form-control mb-2" placeholder="Sobrenome">
+
+          <input type="text" name="telefone" class="form-control <%- errorsObj.contato ? 'is-invalid' : '' %>" placeholder="Telefone">
+          <% if (errorsObj.contato) { %>
+            <div class="invalid-feedback mb-2">
+              <%= errorsObj.contato %>
+            </div>
+          <% } %>
+
+          <input type="email" name="email" class="form-control mb-2 <%- errorsObj.contato ? 'is-invalid' : '' %>" placeholder="Email">
+          <% if (errorsObj.contato) { %>
+            <div class="invalid-feedback mb-2">
+              <%= errorsObj.contato %>
+            </div>
+          <% } %>
+
         </div>
 
         <div class="modal-footer">
@@ -78,12 +95,15 @@
 </div>
 
 <script>
-  const temErros = <%= errors.length > 0 ? true : false %>;
-  if (temErros) {
-    const modalContato = document.getElementById('modalContato');
-    const modal = new bootstrap.Modal(modalContato);
-    modal.show();
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const temErros = <%= Object.keys(errorsObj).length > 0 %>;
+
+    if (temErros) {
+      const modalContato = document.getElementById('modalContato');
+      const modal = new bootstrap.Modal(modalContato);
+      modal.show();
+    }
+  });
 </script>
 
 <%- include('footer') %>

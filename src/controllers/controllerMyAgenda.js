@@ -73,7 +73,7 @@ exports.createContato = async (req, res) => {
   };
 
   if (!req.body.telefone && !req.body.email){
-    errors.telefone = 'O contato deve conter pelo menos um telefone ou um email.';
+    errors.contato = 'Informe pelo menos um telefone ou um email.';
   };
 
   if (Object.keys(errors).length > 0) {

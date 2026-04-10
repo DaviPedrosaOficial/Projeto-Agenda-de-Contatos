@@ -66,15 +66,21 @@ exports.delete = async (req, res) => {
 exports.createContato = async (req, res) => {
   if (!req.session.user) return res.redirect('/login');
 
+  const errors = {};
+
   if (!req.body.nome){
-    req.flash('errors', 'O nome do contato é obrigatório.');
-    return res.redirect('/listas/' + req.params.id);
+    errors.nome = 'O nome é obrigatório.';
   };
 
   if (!req.body.telefone && !req.body.email){
-    req.flash('errors', 'O contato deve conter pelo menos um telefone ou um email.');
-    return res.redirect('/listas/' + req.params.id);
+    errors.telefone = 'O contato deve conter pelo menos um telefone ou um email.';
   };
+
+  if (Object.keys(errors).length > 0) {
+    req.flash('errors', errors);
+    req.flash('formData', req.body);
+    return res.redirect('/listas/' + req.params.id);
+  }
 
   await Contato.create({
     nome: req.body.nome,

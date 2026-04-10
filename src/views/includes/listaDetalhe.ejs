@@ -77,4 +77,13 @@
   </div>
 </div>
 
+<script>
+  const temErros = <%= errors.length > 0 ? true : false %>;
+  if (temErros) {
+    const modalContato = document.getElementById('modalContato');
+    const modal = new bootstrap.Modal(modalContato);
+    modal.show();
+  }
+</script>
+
 <%- include('footer') %>

@@ -241,6 +241,8 @@ Davi Pedrosa
 
 MIT
 
+## 📸 Preview do sistema
+
 ### 🏠 Página inicial
 
 ![Home](./public/assets/img/main.png)

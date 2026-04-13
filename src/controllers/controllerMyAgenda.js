@@ -64,13 +64,31 @@ exports.show = async (req, res) => {
 
   if (!lista) return res.redirect('/myAgenda');
 
-  const contatos = await Contato.find({
-    listaId: lista._id
-  });
+  let filtro = {};
+
+  switch (req.query.ordenar) {
+    case 'nome':
+      filtro = { nome: 1 }; // A-Z
+      break;
+
+    case 'recentes':
+      filtro = { createdAt: -1 }; // mais recentes
+      break;
+
+    case 'antigos':
+      filtro = { createdAt: 1 }; // mais antigos
+      break;
+
+    default:
+      filtro = { createdAt: -1 }; // padrão: mais recentes
+  }
+
+  const contatos = await Contato.find({ listaId: req.params.id }).sort(filtro);
 
   res.render('includes/listaDetalhe', {
     lista,
-    contatos
+    contatos,
+    query: req.query
   });
 };
 

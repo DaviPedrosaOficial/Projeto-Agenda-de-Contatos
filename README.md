@@ -167,17 +167,64 @@ CONNECTIONSTRING=sua_string_do_atlas (a string apresentada no atlas, parecida co
 - Senhas criptografadas com bcrypt
 - Sessões protegidas com express-session
 
-## 📁 Estrutura do Projeto
+## 🏗️ Estrutura do Projeto
 
-src/
-├── controllers/
-├── models/
-├── routes/
-├── views/
-├── middlewares/
-public/
-.env
-server.js
+Este projeto foi desenvolvido seguindo o padrão arquitetural **MVC (Model-View-Controller)**, que tem como objetivo separar responsabilidades e facilitar a manutenção e escalabilidade da aplicação.
+
+### 🧠 Model (Modelo)
+
+Responsável pela estrutura e manipulação dos dados.
+
+- Define os schemas do MongoDB utilizando o Mongoose
+- Contém regras básicas de validação
+- Representa entidades como usuários, listas e contatos
+
+---
+
+### 🎮 Controller (Controlador)
+
+Responsável pela lógica da aplicação.
+
+- Recebe requisições do usuário
+- Processa regras de negócio
+- Interage com os Models
+- Envia os dados para as Views
+
+---
+
+### 🎨 View (Visão)
+
+Responsável pela interface com o usuário.
+
+- Utiliza EJS para renderização dinâmica
+- Exibe dados vindos dos controllers
+- Contém componentes reutilizáveis (partials)
+
+---
+
+### 🔄 Fluxo da aplicação
+
+O funcionamento do sistema segue o seguinte fluxo:
+
+1. O usuário faz uma requisição (ex: acessar uma lista)
+2. A rota direciona para o controller correspondente
+3. O controller busca ou manipula dados no model
+4. Os dados são enviados para a view
+5. A view renderiza a interface para o usuário
+
+---
+
+### 🧩 Outras camadas importantes
+
+Além do MVC, o projeto também conta com:
+
+- **Middlewares**: responsáveis por autenticação, segurança e tratamento de requisições
+- **Assets (public)**: arquivos estáticos como CSS e JavaScript
+- **Configurações**: variáveis de ambiente e conexão com o banco de dados
+
+---
+
+Essa organização torna o projeto mais limpo, modular e fácil de evoluir ao longo do tempo.
 
 ## 💡 Melhorias Futuras
 

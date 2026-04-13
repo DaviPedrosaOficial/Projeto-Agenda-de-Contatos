@@ -28,6 +28,9 @@ router.post('/listas/delete/:id', controllerMyAgenda.delete);                   
 router.post('/contatos/create/:id', controllerMyAgenda.createContato);
 router.post('/contatos/delete/:id', controllerMyAgenda.deleteContato);
 
+// Rota de Editar descrição da lista
+router.post('/listas/descricao/:id', controllerMyAgenda.updateDescricao);
+
 //Rota de Logout
 router.get('/logout', (req, res) => {                                      // Define a rota '/logout' para o método GET, que é a rota de logout da aplicação, e quando essa rota for acessada, a função anônima definida aqui será executada, destruindo a sessão do usuário e redirecionando para a página de login
     req.session.destroy();

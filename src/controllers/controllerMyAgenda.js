@@ -21,6 +21,10 @@ exports.index = async (req, res) => {
 exports.create = async (req, res) => {
   if (!req.session.user) return res.redirect('/login');
 
+  if (!req.body.descricao || !req.body.descricao.trim()) {
+    req.body.descricao = '';
+  }
+
   await Lista.create({
     nome: req.body.nome,
     descricao: req.body.descricao,
@@ -28,6 +32,25 @@ exports.create = async (req, res) => {
   });
 
   res.redirect('/myAgenda');
+};
+
+// Editar descrição da lista
+exports.updateDescricao = async (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+
+  const descricao = req.body.descricao || '';
+
+  await Lista.findOneAndUpdate(
+    {
+      _id: req.params.id,
+      userId: req.session.user._id
+    },
+    {
+      descricao
+    }
+  );
+
+  res.redirect('/listas/' + req.params.id);
 };
 
 // Mostrar lista

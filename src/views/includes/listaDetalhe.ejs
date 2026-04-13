@@ -24,46 +24,63 @@
             <h6 class="text-muted m-0">Descrição</h6>
 
             <!-- BOTÃO EDITAR -->
-            <button class="btn btn-sm btn-outline-secondary">
+            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalDescricao">
               Editar
             </button>
           </div>
 
-          <% if (lista.descricao && lista.descricao.trim() !== '') { %>
-            <p class="mb-0"><%= lista.descricao %></p>
-          <% } else { %>
-            <p class="text-muted fst-italic mb-0">
-              Nenhuma descrição adicionada.
-            </p>
-          <% } %>
+            <!-- TEXTO DE DESCRIÇÃO -->
+            <% if (lista.descricao && lista.descricao.trim() !== '') { %>
+              <p class="mb-0"><%= lista.descricao %></p>
+            <% } else { %>
+              <p class="text-muted fst-italic mb-0">
+                Nenhuma descrição adicionada.
+              </p>
+            <% } %>
 
         </div>
       </div>
 
       <!-- CONTATOS -->
-      <% if (!contatos || contatos.length === 0) { %>
-        <div class="text-center mt-4">
-          <p class="text-muted">Nenhum contato nesta lista</p>
-        </div>
-      <% } else { %>
+      <div class="card shadow-sm">
+        <div class="card-body p-0">
 
-      <ul class="list-group">
-        <% contatos.forEach(contato => { %>
-          <li class="list-group-item d-flex justify-content-between">
-            <div>
-              <strong><%= contato.nome %></strong><br>
-              <small><%= contato.telefone %></small>
+          <% if (!contatos || contatos.length === 0) { %>
+
+            <div class="text-center p-4">
+              <p class="text-muted m-0">Nenhum contato nesta lista</p>
             </div>
 
-            <form action="/contatos/delete/<%= contato._id %>" method="POST">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <button class="btn btn-sm btn-outline-danger">Excluir</button>
-            </form>
-          </li>
-        <% }) %>
-      </ul>
+          <% } else { %>
 
-      <% } %>
+            <ul class="list-group list-group-flush">
+              <% contatos.forEach(contato => { %>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                  <div>
+                    <strong><%= contato.nome %></strong><br>
+                    <small class="text-muted">
+                      <%= contato.telefone || contato.email || 'Sem contato' %>
+                    </small>
+                  </div>
+
+                  <form action="/contatos/delete/<%= contato._id %>" method="POST" class="m-0">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn btn-sm btn-outline-danger">
+                      Excluir
+                    </button>
+                  </form>
+
+                </li>
+
+              <% }) %>
+            </ul>
+
+          <% } %>
+
+        </div>
+      </div>
 
     </div>
 
@@ -113,6 +130,39 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-dark">Salvar</button>
         </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DESCRIÇÃO -->
+ <div class="modal fade" id="modalDescricao" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Editar descrição</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form action="/listas/descricao/<%= lista._id %>" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="modal-body">
+          <textarea 
+            name="descricao" 
+            class="form-control" 
+            rows="4"
+            placeholder="Digite uma descrição..."
+          ><%= lista.descricao %></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-dark">Salvar</button>
+        </div>
+
       </form>
 
     </div>

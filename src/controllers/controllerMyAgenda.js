@@ -23,6 +23,7 @@ exports.create = async (req, res) => {
 
   await Lista.create({
     nome: req.body.nome,
+    descricao: req.body.descricao,
     userId: req.session.user._id
   });
 

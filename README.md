@@ -240,3 +240,31 @@ Davi Pedrosa
 ## 📄 Licença
 
 MIT
+
+### 🏠 Página inicial
+
+![Home](./public/assets/img/main.png)
+
+### 📝 Cadastro
+
+![Cadastro](./public/assets/img/cadastro.png)
+
+### 🔐 Login
+
+![Login](./public/assets/img/login.png)
+
+### 📂 Listas
+
+![Listas](./public/assets/img/MyAgenda.png)
+
+### ➕ Nova lista
+
+![Nova Lista](./public/assets/img/NovaListaDeContatos.png)
+
+### 📇 Contatos
+
+![Contatos](./public/assets/img/DentroListaDeContato.png)
+
+### ➕ Novo contato
+
+![Novo Contato](./public/assets/img/NovoContato.png)

@@ -1,53 +1,112 @@
 <%- include('header') %> <%- include('navbar') %>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8 my-3">
-      <h1 class="display-1 text-center">Agenda</h1>
-      <p class="text-center lead mt-4">
-        Bem-vindo à sua agenda de contatos! Aqui você pode organizar e gerenciar
-        seus contatos de forma fácil e eficiente. Adicione, edite e exclua
-        contatos para manter sua lista sempre atualizada. Aproveite a
-        praticidade de ter todas as suas informações de contato em um só lugar!
-      </p>
+  <!-- HERO -->
+  <div class="text-center my-5">
+    <h1 class="display-4 fw-bold">
+      Organize seus contatos de forma inteligente
+    </h1>
+    <p class="lead mt-3 text-muted">
+      Crie listas personalizadas, adicione descrições e gerencie seus contatos
+      com praticidade e clareza.
+    </p>
 
-      <div class="responsive-table">
-        <table class="table my-3 mt-5">
-          <tr>
-            <td>Davi</td>
-            <td>Pedrosa</td>
-            <td>(31)97543-2109</td>
-            <td>davip@gmail.com</td>
-          </tr>
-          <tr>
-            <td>João</td>
-            <td>Pedro</td>
-            <td>(31)97576-8209</td>
-            <td>joaopedro@gmail.com</td>
-          </tr>
-          <tr>
-            <td>Sofia</td>
-            <td>Brasil</td>
-            <td>(31)99143-3509</td>
-            <td>sofiabrasil@gmail.com</td>
-          </tr>
-          <tr>
-            <td>Maria</td>
-            <td>Antonieta</td>
-            <td>(31)99982-5673</td>
-            <td>mariaantonieta@gmail.com</td>
-          </tr>
-        </table>
-      </div>
+    <div class="mt-4">
+      <a href="/register" class="btn btn-dark btn-lg me-2">Começar agora</a>
+      <a href="/login" class="btn btn-outline-secondary btn-lg"
+        >Já tenho conta</a
+      >
+    </div>
+  </div>
 
-      <p class="text-center lead mt-5">
-        Oferecemos também uma interface intuitiva para facilitar a navegação e a
-        organização dos seus contatos em diferentes categorias. Com recursos de
-        busca e filtragem, você pode encontrar rapidamente o contato desejado.
+  <!-- COMO FUNCIONA -->
+  <div class="row text-center my-5">
+    <div class="col-md-4">
+      <h5 class="fw-bold">📂 Crie listas</h5>
+      <p class="text-muted">
+        Organize seus contatos por categorias como trabalho, amigos ou família.
       </p>
     </div>
-    <div class="col-lg-2"></div>
+
+    <div class="col-md-4">
+      <h5 class="fw-bold">📝 Adicione descrições</h5>
+      <p class="text-muted">
+        Nunca mais esqueça o contexto de cada lista com descrições
+        personalizadas.
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <h5 class="fw-bold">📇 Gerencie contatos</h5>
+      <p class="text-muted">
+        Adicione telefone, email e mantenha tudo organizado em um só lugar.
+      </p>
+    </div>
+  </div>
+
+  <!-- EXEMPLO VISUAL -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h4 class="mb-3">Exemplo de organização</h4>
+
+      <!-- NOME DA LISTA -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="m-0">Amigos</h5>
+        <button class="btn btn-sm btn-dark">+ Novo Contato</button>
+      </div>
+
+      <!-- DESCRIÇÃO -->
+      <div class="card mb-3">
+        <div class="card-body py-2">
+          <small class="text-muted">Descrição</small>
+          <p class="mb-0">Lista de amigos próximos para contato rápido</p>
+        </div>
+      </div>
+
+      <!-- CONTATOS -->
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <strong>Ana Souza</strong><br />
+            <small class="text-muted"
+              >📞 (31)99999-9999 | ✉ ana@email.com</small
+            >
+          </div>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <strong>Carlos Lima</strong><br />
+            <small class="text-muted">📞 (31)98888-8888</small>
+          </div>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <strong>Mariana Alves</strong><br />
+            <small class="text-muted">✉ mariana@email.com</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BENEFÍCIOS -->
+  <div class="row text-center my-5">
+    <div class="col-md-4">
+      <h6 class="fw-bold">⚡ Rápido e simples</h6>
+      <p class="text-muted small">Interface intuitiva e fácil de usar</p>
+    </div>
+
+    <div class="col-md-4">
+      <h6 class="fw-bold">🔍 Filtros inteligentes</h6>
+      <p class="text-muted small">Ordene seus contatos como quiser</p>
+    </div>
+
+    <div class="col-md-4">
+      <h6 class="fw-bold">🔐 Seguro</h6>
+      <p class="text-muted small">Seus dados protegidos por autenticação</p>
+    </div>
   </div>
 </div>
 

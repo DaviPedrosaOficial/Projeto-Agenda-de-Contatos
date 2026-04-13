@@ -75,23 +75,31 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
 
                   <div>
-  
-                    <strong>
-                            <% if (contato.sobrenome) { %>
-                              <%= contato.nome %> <%= contato.sobrenome %><% } 
-                            else { %>
-                              <%= contato.nome %><% 
-                            } %>
-                    </strong><br>
 
-                    <small class="text-muted">
-                            <% if (contato.telefone) { %>
-                              <i class="bi bi-telephone">Telefone:</i> <%= contato.telefone %><br>
-                            <% } %>
-                            <% if (contato.email) { %>
-                              <i class="bi bi-envelope">Email:</i> <%= contato.email %><br>
-                            <% } %>
-                    </small>
+                    <strong class="d-block mb-1">
+                      <% if (contato.sobrenome) { %>
+                        <%= contato.nome %> <%= contato.sobrenome %>
+                      <% } else { %>
+                        <%= contato.nome %>
+                      <% } %>
+                    </strong>
+
+                    <div class="text-muted small">
+
+                      <% if (contato.telefone) { %>
+                        <div class="mb-1">
+                          📞 <%= contato.telefone %>
+                        </div>
+                      <% } %>
+
+                      <% if (contato.email) { %>
+                        <div>
+                          ✉ <%= contato.email %>
+                        </div>
+                      <% } %>
+
+                    </div>
+
                   </div>
 
                   <form action="/contatos/delete/<%= contato._id %>" method="POST" class="m-0">

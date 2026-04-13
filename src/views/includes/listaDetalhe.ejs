@@ -47,7 +47,7 @@
         <h5 class="m-0">Contatos</h5>
 
         <form method="GET" action="/listas/<%= lista._id %>" class="d-flex">
-          <select name="ordenar" class="form-select form-select-sm me-2" onchange="this.form.submit()">
+          <select id="ordenarSelect" name="ordenar" class="form-select form-select-sm me-2"">
             <option value="">Ordenar por</option>
             <option value="nome" <%= (query.ordenar === 'nome') ? 'selected' : '' %>> A-Z </option>
             <option value="recentes" <%= (query.ordenar === 'recentes') ? 'selected' : '' %>> Mais recentes </option>

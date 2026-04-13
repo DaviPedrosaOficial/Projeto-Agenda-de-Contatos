@@ -10,3 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.show();
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('ordenarSelect');
+
+  if (select) {
+    select.addEventListener('change', () => {
+      select.form.submit();
+    });
+  }
+});
